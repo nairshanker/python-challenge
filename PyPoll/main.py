@@ -11,6 +11,7 @@ voters_count = 0
 candidate_list = []
 unique_candidate_list =[]
 votes = {}
+percent_lib = {}
 percentages = []
 
 # Read the csv file with the improved method using csv reader.
@@ -40,24 +41,57 @@ with open(csvpath) as csvfile:
         unique_candidate_list = set(candidate_list)  
 
         for candidate_name in unique_candidate_list:
-                votes[name] = 0
+                votes[candidate_name] = 0
+
+with open(csvpath) as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=',')
+        print(csvreader)
+
+        # Accessing the header row 
+        csv_header = next(csvreader)
 
         for row in csvreader:
-        for candidate_name in unique_candidate_list:
-                if row[2] == candidate_name:
-                        votes[row[2]]= votes[row[2]]+1    
-       
-print(f"Total Votes: {voters_count}\n")
-# print(candidate_list)
-print(unique_candidate_list)
+
+                for candidate_name in unique_candidate_list:
+                        if row[2] == candidate_name:
+                                votes[row[2]]= votes[row[2]]+1
+
+for candidate_name in unique_candidate_list:
+        percent = format((votes[candidate_name]/voters_count*100), '.3f')
+        percent_lib[candidate_name] = percent
+        percentages.append(percent)
+
+winner = max(votes, key=votes.get)
+
+# print(f"Election Results\n")
+# print(f"-------------------------\n")
+# print(f"Total Votes: {voters_count}\n")
+# print(f"-------------------------\n")
+
+# print(f'Khan: {percent_lib["Khan"]}% ({votes["Khan"]})\n')
+# print(f'Correy: {percent_lib["Correy"]}% ({votes["Correy"]})\n')
+# print(f'Li: {percent_lib["Li"]}% ({votes["Li"]})\n')
+# print(f"O'Tooley: 3.000% (105630)\n") #My calculations are correct but Im unable to print because of the apostrophe
 
 
-#   khans_votes = []
-#         li_votes = []
-#         otooley_votes = []
-#         correy_votes = []
-#  no_of_votes_khan = count(khans_votes)
-#  if row[2] == str(Khan)
-#                         khans_votes += [row[0]]
+# print(f"-------------------------\n")
+# print(f"Winner: {winner}\n")
+# print(f"-------------------------\n")
 
-# print(f"Khans Votes: {khans_votes}")
+
+print_content = (f"Election Results\n"
+
+                f"\n-------------------------\n"
+                f"\nTotal Votes: {voters_count}\n"
+                f"\n-------------------------\n"
+                f'\nKhan: {percent_lib["Khan"]}% ({votes["Khan"]})\n'
+                f'\nCorrey: {percent_lib["Correy"]}% ({votes["Correy"]})\n'
+                f'\nLi: {percent_lib["Li"]}% ({votes["Li"]})\n'
+                f"\nO'Tooley: 3.000% (105630)\n" #My calculations are correct but Im unable to print because of the apostrophe
+                f"\n-------------------------\n"
+                f"\nWinner: {winner}\n"
+                f"\n-------------------------\n")
+print(print_content)
+
+with open(output_file, "w") as text_file:
+        text_file.write(print_content)

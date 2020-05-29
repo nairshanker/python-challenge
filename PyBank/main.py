@@ -54,22 +54,23 @@ average = round(sum(net_delta_p_and_l)/len(net_delta_p_and_l),2)
 
                       
 
-print_content = ("Financial Analysis\n")
-print("------------------------\n")
-print(f"Total Months: {month_count}\n")
-print(f"Total: {net_p_and_l}\n")
-print(f"Average  Change: ${average}\n")
-print(f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n")
-print(f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
+# print_content = ("Financial Analysis\n")
+# print("------------------------\n")
+# print(f"Total Months: {month_count}\n")
+# print(f"Total: {net_p_and_l}\n")
+# print(f"Average  Change: ${average}\n")
+# print(f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n")
+# print(f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
 
-print_content = (f"Financial Analysis\n"
+print_content = (f"Financial Analysis"
 
-                 f"------------------------\n"
-                 f"Total Months: {month_count}\n"
-                 f"Total: {net_p_and_l}\n"
-                 f"Average  Change: ${average}\n"
-                 f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
-                 f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
+                 f"\n------------------------\n"
+                 f"\nTotal Months: {month_count}\n"
+                 f"\nTotal: {net_p_and_l}\n"
+                 f"\nAverage  Change: ${average}\n"
+                 f"\nGreatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
+                 f"\nGreatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
+print(print_content)
 
 with open(output_file, "w") as text_file:
         text_file.write(print_content)
