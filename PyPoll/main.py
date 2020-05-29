@@ -63,21 +63,6 @@ for candidate_name in unique_candidate_list:
 
 winner = max(votes, key=votes.get)
 
-# print(f"Election Results\n")
-# print(f"-------------------------\n")
-# print(f"Total Votes: {voters_count}\n")
-# print(f"-------------------------\n")
-
-# print(f'Khan: {percent_lib["Khan"]}% ({votes["Khan"]})\n')
-# print(f'Correy: {percent_lib["Correy"]}% ({votes["Correy"]})\n')
-# print(f'Li: {percent_lib["Li"]}% ({votes["Li"]})\n')
-# print(f"O'Tooley: 3.000% (105630)\n") #My calculations are correct but Im unable to print because of the apostrophe
-
-
-# print(f"-------------------------\n")
-# print(f"Winner: {winner}\n")
-# print(f"-------------------------\n")
-
 
 print_content = (f"Election Results\n"
 
